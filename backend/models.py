@@ -9,7 +9,7 @@ from database import Base
 class User(Base):
     __tablename__ = "users"
 
-    wallet_id = Column(Integer, primary_key=True, index=True)
+    wallet_id = Column(String, primary_key=True, index=True)
     username: Column(String, nullable=False)
     
     # requests are wallet_ids
