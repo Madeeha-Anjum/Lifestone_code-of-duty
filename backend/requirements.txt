@@ -1,2 +1,12 @@
+# baisic requirements
 fastapi>=0.78.0,<0.85.0
 uvicorn>=0.15.0,<0.16.0
+
+# database requirements
+SQLAlchemy>=1.4.0,<1.5.0
+
+# database models requirements  
+pydantic>=1.8.0,<2.0.0
+
+# for uploading files
+python-multipart>=0.0.5,<0.1.0
