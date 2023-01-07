@@ -1,10 +1,11 @@
 import React from "react";
 import styled from '@emotion/styled'
+import Animation from '../components/Animation';
 
 const HomeScreen = () => {
     return (
     <StyledContainer>
-        HELLO WORLD
+        <Animation />
     </StyledContainer>);
 }
 
