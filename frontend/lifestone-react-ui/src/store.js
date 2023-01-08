@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from "./reducers/index";
-import { persistStore, persistReducer, autoRehydrate } from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import thunk from "redux-thunk";
 
