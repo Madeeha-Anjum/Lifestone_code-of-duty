@@ -2,7 +2,7 @@ import React from "react";
 import styled from '@emotion/styled'
 import Animation from '../components/Animation';
 
-const HomeScreen = () => {
+const WelcomeScreen = () => {
     return (
     <StyledContainer>
         <Animation />
@@ -13,4 +13,4 @@ const StyledContainer = styled('div')`
     background-color: #121212;
 `;
 
-export default HomeScreen;
+export default WelcomeScreen;
