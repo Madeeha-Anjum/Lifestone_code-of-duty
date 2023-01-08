@@ -36,6 +36,17 @@ const Header = () => {
             <WalletIcon />
           </div>
         </Button>
+        <Button
+          color="pink-600"
+          style={{ backgroundColor: "#de3576" }}
+          onClick={() => {
+            dispatch(updateLoginState( false ));
+            navigate('/');
+            window.location.reload();
+          }}
+        >
+            Log out
+        </Button>
       </Navbar>
       <hr/>
     </div>
