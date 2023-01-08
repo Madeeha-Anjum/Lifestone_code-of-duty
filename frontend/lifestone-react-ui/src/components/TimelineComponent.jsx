@@ -3,6 +3,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
+import { Verified } from "@mui/icons-material";
 import "react-vertical-timeline-component/style.min.css";
 import { getMilestonesUser } from "../Api";
 import { useSelector } from "react-redux";
@@ -15,6 +16,15 @@ const StyledVerticalTimelineElement = styled(VerticalTimelineElement)`
 }
 .
 `
+
+const StyledDiv = styled('div')`
+    font-size: 12px;
+    word-wrap: break-word;
+    color: green;
+    display: flex;
+    align-items: center;
+
+`;
 
 const Timeline = () => {
   const [milestones, setMilestones] = useState([]);
@@ -57,6 +67,10 @@ console.log(counter)
                 {milestone.title}
               </h3>
               <p>{milestone.description}</p>
+            <StyledDiv>
+                <Verified color="info"/>
+                <span style={{ "margin-left": "0.2rem" }}>{milestone.txn_id}</span>
+            </StyledDiv>
             </div>{" "}
             <div style={{textAlign:"right"}}>
               {" "}

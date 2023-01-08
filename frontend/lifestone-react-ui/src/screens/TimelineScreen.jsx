@@ -19,7 +19,6 @@ import detectEthereumProvider from "@metamask/detect-provider";
 const TimelineScreen = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const { userId } = useSelector((state) => state.auth);
-  const { provider } = useSelector((state) => state.auth);
   const [contractFaucet, setContractFaucet] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [image, setImage] = useState("");
@@ -37,11 +36,8 @@ const TimelineScreen = () => {
         }
     }
     fetchContracts();
+  }, [])
 
-    
-
-  }, [provider])
-  
   const fileSelectedHandler = (e) => {
     setImage(e.target.files[0]);
     console.log(e.target.files[0]);
@@ -51,30 +47,31 @@ const TimelineScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", image);
-
+    
     const milestone = new FormData();
     milestone.append("description", e.target[1].value);
     milestone.append("title", e.target[0].value);
     milestone.append("owner_id", userId);
-    milestone.append("file", image, image.name);
 
     console.log("milestone", milestone);
-    await addMilestoneToDb(milestone).then(async (res) => {
-      console.log("success", res);
-      setModalOpen(false);
 
       // add funds to the company
-    const blockHash = await contractFaucet.addFunds({
+      const blockHash = await contractFaucet.addFunds({
         from: userId,
         value: Web3.utils.toWei("0.3", "ether")
     });
 
-    console.log("Block hash: ", blockHash);
+    console.log("BLock hash: ", blockHash.tx)
+
+    milestone.append("txn_id", blockHash.tx);
+    milestone.append("file", image, image.name);
+
+    await addMilestoneToDb(milestone).then(async (res) => {
+      console.log("success", res);
+      setModalOpen(false);
 
     });
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

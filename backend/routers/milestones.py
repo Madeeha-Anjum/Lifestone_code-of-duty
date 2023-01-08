@@ -16,6 +16,7 @@ class Milestones(BaseModel):
     description: str
     title: str
     owner_id: str
+    txn_id: str
     # image
 
 
@@ -39,12 +40,14 @@ async def create_milestone(
     description: str = Form(...),
     title: str = Form(...),
     owner_id: str = Form(...),
+    txn_id: str = Form(...),
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
     db_milestone = models.Milestones()
     db_milestone.description = description
     db_milestone.title = title
+    db_milestone.txn_id = txn_id
     db_milestone.owner_id = owner_id
 
     # Get a random filename for the image file
