@@ -22,7 +22,7 @@ const Animation = () => {
     window.addEventListener("resize", handleResize);
 
     // Particle geometry
-    const distance = Math.min(150, window.innerWidth / 4);
+    const distance = Math.min(175, window.innerWidth / 4);
     const geometry = new THREE.BufferGeometry();
     const vertices = [];
     for (let i = 0; i < 1600; i++) {
