@@ -7,19 +7,18 @@ import {
   Nav,
   FormGroup,
   Form,
-  NavLink,
   Input,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import WalletIcon from "@mui/icons-material/Wallet";
 import shortLogoWithText from "../images/shortLogoWithText.png";
-import { updateLoginState } from "../actions/AuthActions";
+import { updateLoginState, updateProvider } from "../actions/AuthActions";
 import { updateOwnerId } from "../actions/AuthActions";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import jazzicon from "@metamask/jazzicon";
-import { Avatar } from "@mui/material";
+// import { Avatar } from "@mui/material";
 import { addUserToDb } from "../Api";
 
 const SearchBar = () => {
@@ -72,14 +71,14 @@ const Header = () => {
       if (provider) {
         setWeb3Api({
           web3: new Web3(provider),
-          provider,
+          provider
         });
       } else {
         console.error("Please install MetaMask!");
       }
     };
     loadProvider();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const getAccount = async () => {

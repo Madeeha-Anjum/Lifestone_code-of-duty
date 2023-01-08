@@ -4,7 +4,6 @@ import React from "react";
    VerticalTimelineElement,
  } from "react-vertical-timeline-component";
  import "react-vertical-timeline-component/style.min.css";
- import { Button, Modal } from "reactstrap";
 
  const Timeline = () => {
    return (

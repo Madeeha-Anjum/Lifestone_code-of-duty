@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   Button,
@@ -10,13 +10,37 @@ import {
   Label,
   ModalBody,
 } from "reactstrap";
-import { addMilestoneToDb } from "../Api";
+import { addMilestoneToDb, getMilestonesForUser } from "../Api";
 import Timeline from "../components/TimelineComponent";
+import Web3 from "web3";
+import { loadContract } from "../utils/load-contracts";
+import detectEthereumProvider from "@metamask/detect-provider";
+
 const TimelineScreen = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const { userId } = useSelector((state) => state.auth);
+  const { provider } = useSelector((state) => state.auth);
+  const [contractFaucet, setContractFaucet] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [image, setImage] = useState("");
+
+  useEffect(() => {
+    const fetchContracts = async () => {
+
+        const provider = await detectEthereumProvider();
+
+        if (provider) {
+
+        const result = await loadContract("Faucet", provider);
+        setContractFaucet(result);
+
+        }
+    }
+    fetchContracts();
+
+    
+
+  }, [provider])
 
   const fileSelectedHandler = (e) => {
     setImage(e.target.files[0]);
@@ -45,11 +69,21 @@ const TimelineScreen = () => {
     milestone.append("file", image, image.name);
 
     console.log("milestone", milestone);
-    await addMilestoneToDb(milestone).then((res) => {
+    await addMilestoneToDb(milestone).then(async (res) => {
       console.log("success", res);
       setModalOpen(false);
+
+    // add funds to the company
+    const blockHash = await contractFaucet.addFunds({
+        from: userId,
+        value: Web3.utils.toWei("0.3", "ether")
+    });
+
+    console.log("Block hash: ", blockHash);
+
     });
   };
+
   return (
     <div>
       <div className="ms-5">
