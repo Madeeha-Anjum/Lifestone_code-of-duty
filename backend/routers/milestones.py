@@ -34,7 +34,7 @@ def get_db():
 
 
 @router.post("/create")
-async def create_milestone(description: str = Form(), title: str = Form(), owner_id: str = Form(), file: UploadFile = File(...), db: Session = Depends(get_db)):
+async def create_milestone(description: str = Form(...), title: str = Form(...), owner_id: str = Form(...), file: UploadFile = File(...), db: Session = Depends(get_db)):
     db_milestone = models.Milestones()
     db_milestone.description = description
     db_milestone.title = title
