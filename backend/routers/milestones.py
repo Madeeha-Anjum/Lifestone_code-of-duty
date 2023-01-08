@@ -69,3 +69,10 @@ async def get_all_milestones(db: Session = Depends(get_db)):
     if db_milestones is None:
         raise HTTPException(status_code=404, detail="NO MILESTONES")
     return db_milestones
+
+@router.get("/user")
+async def get_user_milestones(db: Session = Depends(get_db), owner_id: str = ""):
+    db_milestones = db.query(models.Milestones).filter(models.Milestones.owner_id == owner_id).all()
+    if db_milestones is None:
+        raise HTTPException(status_code=404, detail="NO MILESTONES")
+    return db_milestones
