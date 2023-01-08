@@ -10,3 +10,6 @@ pydantic>=1.8.0,<2.0.0
 
 # for uploading files
 python-multipart>=0.0.5,<0.1.0
+
+# for AWS bot03
+boto3>=1.18.0,<1.19.0

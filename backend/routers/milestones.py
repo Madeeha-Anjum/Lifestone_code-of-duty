@@ -9,6 +9,7 @@ from datetime import datetime
 import uuid
 from s3 import upload
 import shutil
+import os
 
 
 class Milestones(BaseModel):
@@ -34,7 +35,13 @@ def get_db():
 
 
 @router.post("/create")
-async def create_milestone(description: str = Form(...), title: str = Form(...), owner_id: str = Form(...), file: UploadFile = File(...), db: Session = Depends(get_db)):
+async def create_milestone(
+    description: str = Form(...),
+    title: str = Form(...),
+    owner_id: str = Form(...),
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+):
     db_milestone = models.Milestones()
     db_milestone.description = description
     db_milestone.title = title
@@ -58,9 +65,14 @@ async def create_milestone(description: str = Form(...), title: str = Form(...),
     db_milestone.date = str(datetime.now())
 
     db.add(db_milestone)
-    db.commit()
+    # db.commit()
+    db.flush() # temporary commit to get the id
+    # get the id of the newly created milestone
+    milestone_id = db_milestone.id
+    
+    db.commit() # commit the changes to the database
 
-    return db_milestone
+    return milestone_id
 
 
 @router.get("/all")
@@ -70,9 +82,12 @@ async def get_all_milestones(db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="NO MILESTONES")
     return db_milestones
 
+
 @router.get("/user")
 async def get_user_milestones(db: Session = Depends(get_db), owner_id: str = ""):
-    db_milestones = db.query(models.Milestones).filter(models.Milestones.owner_id == owner_id).all()
+    db_milestones = (
+        db.query(models.Milestones).filter(models.Milestones.owner_id == owner_id).all()
+    )
     if db_milestones is None:
         raise HTTPException(status_code=404, detail="NO MILESTONES")
     return db_milestones
