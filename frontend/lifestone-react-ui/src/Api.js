@@ -10,3 +10,17 @@ export const addUserToDb = async userDetails => {
         return "Not sucessful";
     }
 }
+
+export const addMilestoneToDb = async milestoneDetails => {
+    let config = {
+        headers:{
+            'content-type':'multipart/form-data'
+        }
+    }
+    try {
+        await axios.post('/milestones/create', milestoneDetails, config);
+        return "Success"
+    } catch (err) {
+        return "Not sucessful";
+    }
+}
