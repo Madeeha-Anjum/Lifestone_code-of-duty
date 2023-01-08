@@ -26,7 +26,7 @@ class Milestones(Base):
     id = Column(Integer, index=True, primary_key=True)
     date = Column(String, nullable=False)
     description = Column(String, nullable=False)
-    s3_object = Column(String, nullable=False)
+    s3_filename = Column(String, nullable=False)
     title = Column(String, nullable=False)
 
     owner_id = Column(Integer, ForeignKey("users.wallet_id"))
