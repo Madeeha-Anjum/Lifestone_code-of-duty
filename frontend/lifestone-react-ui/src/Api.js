@@ -24,7 +24,8 @@ export const addMilestoneToDb = async milestoneDetails => {
         return "Not sucessful";
     }
 }
-export const getMilestonesForUser = async userId => {
+
+export const getMilestonesUser = async userId => {
     try {
         const result = await axios.get('/milestones/user?owner_id='+userId)
         return result.data
@@ -32,4 +33,4 @@ export const getMilestonesForUser = async userId => {
         console.log("No milestones found. Something might have gone wrong")
         return [];
     }
-}
+};

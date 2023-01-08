@@ -10,7 +10,7 @@ import {
   Label,
   ModalBody,
 } from "reactstrap";
-import { addMilestoneToDb, getMilestonesForUser } from "../Api";
+import { addMilestoneToDb } from "../Api";
 import Timeline from "../components/TimelineComponent";
 import Web3 from "web3";
 import { loadContract } from "../utils/load-contracts";
@@ -41,7 +41,7 @@ const TimelineScreen = () => {
     
 
   }, [provider])
-
+  
   const fileSelectedHandler = (e) => {
     setImage(e.target.files[0]);
     console.log(e.target.files[0]);
@@ -54,14 +54,6 @@ const TimelineScreen = () => {
     const formData = new FormData();
     formData.append("file", image);
 
-    console.log(image.name);
-    // const milestone = {
-    //   "title": e.target[0].value,
-    //   "description": e.target[1].value,
-    //   "owner_id":userId,
-    //   "file": formData,
-    // };
-
     const milestone = new FormData();
     milestone.append("description", e.target[1].value);
     milestone.append("title", e.target[0].value);
@@ -73,7 +65,7 @@ const TimelineScreen = () => {
       console.log("success", res);
       setModalOpen(false);
 
-    // add funds to the company
+      // add funds to the company
     const blockHash = await contractFaucet.addFunds({
         from: userId,
         value: Web3.utils.toWei("0.3", "ether")
@@ -82,6 +74,7 @@ const TimelineScreen = () => {
     console.log("Block hash: ", blockHash);
 
     });
+    window.location.reload();
   };
 
   return (
@@ -90,15 +83,24 @@ const TimelineScreen = () => {
         <h2 className="text-white ">Timeline screen</h2>
       </div>{" "}
       <Timeline />
-      <div className="container">
+      <div className="container parent-element">
         <Button
-          className="btn btn-light"
+          className="btn btn-light text-white float-end"
           rounded
           onClick={() => setModalOpen(true)}
-          style={{ borderRadius: "20px" }}
+          style={{
+            borderRadius: "50%",
+            backgroundColor: "#343434",
+            borderColor: "#343434",
+            width: "50px",
+            height: "50px",
+            right: "20px",
+            bottom: "20px",
+          }}
         >
-          <h1>+</h1>
+          <h3>+</h3>
         </Button>
+
         <Modal isOpen={modalOpen} toggle={() => setModalOpen(false)}>
           <ModalHeader>Add Lifestone</ModalHeader>
           <ModalBody>
