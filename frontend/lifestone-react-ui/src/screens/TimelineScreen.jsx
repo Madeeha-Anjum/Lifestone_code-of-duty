@@ -47,7 +47,7 @@ const TimelineScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const milestone = new FormData();
     milestone.append("description", e.target[1].value);
     milestone.append("title", e.target[0].value);
@@ -71,7 +71,7 @@ const TimelineScreen = () => {
       setModalOpen(false);
 
     });
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
