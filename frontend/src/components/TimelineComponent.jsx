@@ -15,43 +15,42 @@ const StyledVerticalTimelineElement = styled(VerticalTimelineElement)`
     background-color: #23272A;
 }
 .
-`
+`;
 
-const StyledDiv = styled('div')`
-    font-size: 12px;
-    word-wrap: break-word;
-    color: green;
-    display: flex;
-    align-items: center;
-
+const StyledDiv = styled("div")`
+  font-size: 12px;
+  word-wrap: break-word;
+  color: green;
+  display: flex;
+  align-items: center;
 `;
 
 const Timeline = () => {
   const [milestones, setMilestones] = useState([]);
   const { userId } = useSelector((state) => state.auth);
   const [counter, setCounter] = useState(0);
-  const milestonesList = milestones.reverse()
+  const milestonesList = milestones.reverse();
   console.log(milestonesList);
-console.log(counter)
-//   const timelineElementStyle = {
-//     display: "flex",
-//     flexDirection: "row",
-//     alignItems: "flex-start",
-//     justifyContent: "space-between",
-//   };
+  console.log(counter);
+  //   const timelineElementStyle = {
+  //     display: "flex",
+  //     flexDirection: "row",
+  //     alignItems: "flex-start",
+  //     justifyContent: "space-between",
+  //   };
 
   useEffect(() => {
     const getter = async () => {
       const result = await getMilestonesUser(userId);
       console.log(result);
       setMilestones(result);
-      setCounter(counter+1)
+      setCounter((old) => {
+        old++;
+      });
     };
     getter();
-}, [userId]);
+  }, [userId]);
 
-
-  
   return (
     <VerticalTimeline>
       {milestonesList.map((milestone) => {
@@ -59,20 +58,21 @@ console.log(counter)
           <StyledVerticalTimelineElement
             className="vertical-timeline-element--work my-class text-white"
             iconStyle={{ background: "rgb(255, 50, 150)", color: "#fff" }}
-  
-            style={{color:"ff007f"}}
+            style={{ color: "ff007f" }}
           >
             <div>
               <h3 className="vertical-timeline-element-title">
                 {milestone.title}
               </h3>
               <p>{milestone.description}</p>
-            <StyledDiv>
-                <Verified color="info"/>
-                <span style={{ "margin-left": "0.2rem" }}>{milestone.txn_id}</span>
-            </StyledDiv>
+              <StyledDiv>
+                <Verified color="info" />
+                <span style={{ "margin-left": "0.2rem" }}>
+                  {milestone.txn_id}
+                </span>
+              </StyledDiv>
             </div>{" "}
-            <div style={{textAlign:"right"}}>
+            <div style={{ textAlign: "right" }}>
               {" "}
               <img
                 src={

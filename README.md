@@ -68,8 +68,8 @@ When the backend starts for the first time, it will create a new database file `
 #### :running: Running Locally
 
 0. `cd frontend`
-1. Install dependencies `npm install`
-2. Run `npm start`
+1. Install dependencies `pnpm install`
+2. Run `pnpm start`
 3. Open the frontend on `http://localhost:3000`
 
 ---
