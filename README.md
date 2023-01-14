@@ -34,20 +34,14 @@ Introducing **Lifestone**, an innovative platform that allows you to store recor
 
 ## :hammer_and_wrench: Built With
 
-<img src="https://img.shields.io/badge/metamask-4A90E2?style=for-the-badge&logo=metamask&logoColor=white" alt="metamask badge metamask" />
+<!-- make all img inline block -->
+![alt text](https://img.shields.io/badge/metamask-4A90E2?style=for-the-badge&logo=metamask&logoColor=white "metamask badge metamask") ![alt text](https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=61DAFB "react badge react") ![alt text](https://img.shields.io/badge/emotion-DB7093?style=for-the-badge&logo=emotion&logoColor=white "emotion badge emotion") ![alt text](https://img.shields.io/badge/three.js-000000?style=for-the-badge&logo=three.js&logoColor=white "three.js badge three.js") ![alt text](https://img.shields.io/badge/greenstock-058DC7?style=for-the-badge&logo=greenstock&logoColor=white "greenstock badge greenstock")
 
-<img src="https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react badge react" />
-<img src="https://img.shields.io/badge/emotion-DB7093?style=for-the-badge&logo=emotion&logoColor=white" alt="emotion badge emotion" />
-<img src="https://img.shields.io/badge/three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="three.js badge three.js" />
-<img src="https://img.shields.io/badge/greenstock-058DC7?style=for-the-badge&logo=greenstock&logoColor=white" alt="greenstock badge greenstock" />
-<img src="https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=fastapi&logoColor=white" alt="fastapi badge fastapi" />
-<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="python badge python" />
-<img src="https://img.shields.io/badge/sqlite3-00 =3B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="sqlite3 badge sqlite3" />
-<img src="https://img.shields.io/badge/ethereum-3C3C3D?style=for-the-badge&logo=ethereum&logoColor=white" alt="ethereum badge ethereum" />
-<img src="https://img.shields.io/badge/solidity-363636?style=for-the-badge&logo=solidity&logoColor=white" alt="solidity badge solidity" />
-<img src="https://img.shields.io/badge/web3.js-050505?style=for-the-badge&logo=web3.js&logoColor=white" alt="web3.js badge web3.js" />
-<img src="https://img.shields.io/badge/ethers.js-323232?style=for-the-badge&logo=ethers.js&logoColor=white" alt="ethers.js badge ethers.js" />
-<img src="https://img.shields.io/badge/ganache-050505?style=for-the-badge&logo=ganache&logoColor=white" alt="ganache badge ganache" />
+![alt text](https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=fastapi&logoColor=white "fastapi badge fastapi")  ![alt text](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white "python badge python") ![alt text](https://img.shields.io/badge/sqlite3-00=3B57?style=for-the-badge&logo=sqlite&logoColor=white "sqlite3 badge sqlite3")
+
+![alt text](https://img.shields.io/badge/ethereum-3C3C3D?style=for-the-badge&logo=ethereum&logoColor=white "ethereum badge ethereum") ![alt text](https://img.shields.io/badge/solidity-363636?style=for-the-badge&logo=solidity&logoColor=white "solidity badge solidity")
+
+![alt text](https://img.shields.io/badge/web3.js-050505?style=for-the-badge&logo=web3.js&logoColor=white "web3.js badge web3.js") ![alt text](https://img.shields.io/badge/ethers.js-333333?style=for-the-badge&logo=ethers.js&logoColor=white "ethers.js badge ethers.js")  
 
 ---
 
